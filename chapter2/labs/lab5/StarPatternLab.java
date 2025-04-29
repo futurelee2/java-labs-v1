@@ -22,6 +22,10 @@ public class StarPatternLab {
         // *****
         
         // TODO: 위와 같은 패턴을 출력하세요.
+        int i = 1;
+        for (int i = 1; i <= height; i++){
+            System.out.println("*");
+        }
         
         
         // 2. 직각삼각형 패턴 (오른쪽 정렬)
