@@ -38,7 +38,7 @@ public class EnumExample {
         
         // Enum의 ordinal() 메소드로 순서 확인
         System.out.println("\n===== Enum의 ordinal() 메소드 =====");
-        System.out.println(Day.MONDAY + "의 순서: " + Day.MONDAY.ordinal());
+        System.out.println(Day.MONDAY + "의 순서: " + Day.MONDAY.ordinal()); //ordinal 인덱스 순서
         System.out.println(Day.SUNDAY + "의 순서: " + Day.SUNDAY.ordinal());
 
         // 필드와 메소드가 있는 Enum 사용
@@ -72,7 +72,7 @@ public class EnumExample {
         TaskStatus status = TaskStatus.PENDING;
         System.out.println("초기 상태: " + status);
         
-        status = status.nextStatus();
+        status = status.nextStatus(); // 호출 시, 상태 변환
         System.out.println("다음 상태: " + status);
         
         status = status.nextStatus();
@@ -105,7 +105,7 @@ enum Season {
     // 생성자 (private이 기본값)
     Season(String description, int averageTemperature) {
         this.description = description;
-        this.averageTemperature = averageTemperature;
+        this.averageTemperature = averageTemperature; //초기화
     }
     
     // Getter 메소드
@@ -143,7 +143,7 @@ enum Operation {
         public int calculate(int x, int y) {
             return x / y;
         }
-    };
+    }; // calculate 오버라이딩 (추상화, 다형성 개념)
     
     private final String symbol;
     
