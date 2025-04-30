@@ -110,7 +110,7 @@ public class StarPatternLab {
         //   *****
         //    ***
         //     *
-
+        
         // TODO: 위와 같은 패턴을 출력하세요.
         // 방법1
 //        int star3 = 1;

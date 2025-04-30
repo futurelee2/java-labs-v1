@@ -31,7 +31,7 @@ public class MemoryStructure {
         System.out.println("primitiveB: " + primitiveB); // 20 출력
         
         Person personA = new Person("John"); // 객체 생성
-        Person personB = personA; // 참조 복사 (같은 객체를 가리킴) 
+        Person personB = personA; // 참조 복사 (같은 객체를 가리킴)
         personB.setName("Elon"); // personA에도 영향 -> 주소값 복사이기때문
 
         // person A & B -> 스택, 값 -> 힙
