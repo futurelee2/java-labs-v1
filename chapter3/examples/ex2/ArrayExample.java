@@ -14,6 +14,10 @@ public class ArrayExample {
         int[] numbers1 = {10, 20, 30, 40, 50};
         
         // 방법 2: 배열 선언 후 초기화
+
+
+
+
         int[] numbers2 = new int[5];
         numbers2[0] = 10;
         numbers2[1] = 20;
@@ -25,7 +29,7 @@ public class ArrayExample {
         int numbers3[] = new int[]{10, 20, 30, 40, 50};
         
         // 배열 출력
-        System.out.println("numbers1: " + Arrays.toString(numbers1));
+        System.out.println("numbers1: " + Arrays.toString(numbers1)); // Arrays 클래스 ( jdk 안 저장되어있는 자바 기본 라이브러리)
         System.out.println("numbers2: " + Arrays.toString(numbers2));
         System.out.println("numbers3: " + Arrays.toString(numbers3));
         
@@ -60,7 +64,7 @@ public class ArrayExample {
         // 문자 배열
         char[] chars = {'H', 'e', 'l', 'l', 'o'};
         System.out.println("문자 배열: " + Arrays.toString(chars));
-        System.out.println("문자열로 변환: " + new String(chars));
+        System.out.println("문자열로 변환: " + new String(chars)); //문자열이 배열값으로 초기화를 함?, String 내부 함수에서 기본 문자 char 배열을 사용함
         
         // boolean 배열
         boolean[] flags = {true, false, true, true, false};
@@ -70,7 +74,7 @@ public class ArrayExample {
         System.out.println("\n===== 배열 복사 =====");
         
         // 1. Arrays.copyOf 사용
-        int[] copied1 = Arrays.copyOf(numbers1, numbers1.length);
+        int[] copied1 = Arrays.copyOf(numbers1, numbers1.length); //Arrays 안 존재하는 매서드
         System.out.println("Arrays.copyOf: " + Arrays.toString(copied1));
         
         // 2. System.arraycopy 사용
@@ -91,7 +95,10 @@ public class ArrayExample {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-        
+
+        //int matrix2[][] = new matrix2[3][4]; ??
+
+
         // 2차원 배열 출력
         System.out.println("2차원 배열 출력:");
         for (int i = 0; i < matrix.length; i++) {
@@ -120,7 +127,7 @@ public class ArrayExample {
         // 요소 초기화
         int value = 1;
         for (int i = 0; i < jaggedArray.length; i++) {
-            for (int j = 0; j < jaggedArray[i].length; j++) {
+            for (int j = 0; j < jaggedArray[i].length; j++) { //동일한 사이즈가 아니기때문에 length로 접근
                 jaggedArray[i][j] = value++;
             }
         }
@@ -136,7 +143,7 @@ public class ArrayExample {
         int[] unsorted = {5, 2, 8, 1, 9, 3, 7, 4, 6};
         System.out.println("정렬 전: " + Arrays.toString(unsorted));
         
-        Arrays.sort(unsorted);
+        Arrays.sort(unsorted); // 정렬 메소드 활용하여 정렬
         System.out.println("정렬 후: " + Arrays.toString(unsorted));
     }
 } 
