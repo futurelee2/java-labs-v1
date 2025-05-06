@@ -48,28 +48,22 @@ public class MemoryLab {
         // 메소드 내에서 값을 변경하고 메소드 호출 전후의 값을 비교하세요.
         int val = 15;
         System.out.println("매소드 호출 전 val :" + val);
-        exam(val);
+        modifyValue(val);
 
 
-
-    // TODO: 참조 타입 변수를 선언하고 메소드에 전달한 후
-    // 메소드 내에서 참조된 객체의 값을 변경하고 메소드 호출 전후의 값을 비교하세요.
+        // TODO: 참조 타입 변수를 선언하고 메소드에 전달한 후
+        // 메소드 내에서 참조된 객체의 값을 변경하고 메소드 호출 전후의 값을 비교하세요.
 
         String name2 = "mirae";
         System.out.println("메소드 호출 전 :" + name2);
         modifyObject(name2);
-
-    }
+        }
     
     // 기본 타입 매개변수 전달 메소드
-    public static int exam(int val){
-        val = 10;
-        System.out.println("매소드 호출 후 val :"+ val);
-        return val;
-    }
-
     public static void modifyValue(int value) {
         // TODO: 매개변수 값을 변경하고 변경된 값을 출력하세요.
+        value = 10;
+        System.out.println("매소드 호출 후 val :"+ value);
     }
     
     // 참조 타입 매개변수 전달 메소드
