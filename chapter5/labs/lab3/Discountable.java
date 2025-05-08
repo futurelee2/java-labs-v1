@@ -8,11 +8,15 @@ package chapter5.labs.lab3;
  */
 public interface Discountable {
     // TODO: 할인율을 반환하는 메소드 선언
-    
+    double discountRate();
     
     // TODO: 할인된 가격을 계산하는 메소드 선언
-    
+    int discountPrice();
     
     // TODO: 할인 정보를 출력하는 default 메소드 구현
-    
+    default String discountInfo(){
+        return "할인율" + discountRate() + "할인정보" + discountPrice();
+    }
+
+
 } 

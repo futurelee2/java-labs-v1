@@ -18,8 +18,10 @@ public class MemoryStructure {
         
         // 객체 생성 - 참조 변수는 스택에, 객체(값)는 힙에 저장
         MemoryStructure obj = new MemoryStructure();
-        System.out.println("인스턴스 변수(힙): " + obj.instanceVariable);
-        
+        System.out.println("인스턴스 변수(힙): " + obj.instanceVariable); // 객체를 생성한 뒤 인스턴스 변수 접근은 가능함. (단, private가 아닐 경우)
+//        System.out.println("인스턴스 변수(힙): " + instanceVariable); // 이렇게 인스턴스 변수에는 바로 접근이 불가능함
+
+
         // 기본 타입(Primitive Type) vs 참조 타입(Reference Type)
         System.out.println("\n===== 기본 타입 vs 참조 타입 =====");
         

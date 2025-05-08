@@ -8,11 +8,14 @@ package chapter5.labs.lab3;
  */
 public interface Buyable {
     // TODO: 상품의 가격을 반환하는 메소드 선언
-    
+    int price();
+
     
     // TODO: 상품의 이름을 반환하는 메소드 선언
-    
+    String name();
     
     // TODO: 상품 정보를 출력하는 default 메소드 구현
-    
+    default String info(){
+        return "상품 이름 :" +  name() + " 상품 가격 :" + price();
+    };
 } 

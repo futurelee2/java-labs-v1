@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class MultiExceptionExample {
     public static void main(String[] args) {
         // 파일 읽기 예제 - try-with-resources 사용
-        try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) { // 파일이 없어서 에러가 남.
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -24,3 +24,5 @@ public class MultiExceptionExample {
         System.out.println("프로그램을 종료합니다.");
     }
 } 
+
+/// 파일이 없어서 에러가 나지만, 자동으로 반납해줌 (가비지 컬렉션 기능과 비슷함)

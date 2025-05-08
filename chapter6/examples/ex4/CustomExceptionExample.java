@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 이 예제는 사용자 정의 예외를 생성하고 사용하는 방법을 보여줍니다.
  */
 public class CustomExceptionExample {
-    // 에러 코드 상수
+    // 에러 코드 상수 -> 바뀌지 않으니까 보통 에러코드는 상수로 처리함 (static final)
     public static final int ERROR_INVALID_AGE = 1001;
     public static final int ERROR_INVALID_NAME = 1002;
     
@@ -57,8 +57,8 @@ public class CustomExceptionExample {
      */
     private static void validatePerson(String name, int age) throws CustomException {
         // 이름 유효성 검사
-        if (name == null || name.trim().length() < 2) {
-            throw new CustomException("이름이 유효하지 않습니다.", ERROR_INVALID_NAME);
+        if (name == null || name.trim().length() < 2) { // 이름이 null 이거나, 이름이 2보다 작을 때 예외 발생
+            throw new CustomException("이름이 유효하지 않습니다.", ERROR_INVALID_NAME); // 이때 발생하는 에러가 내가 만든 에러
         }
         
         // 나이 유효성 검사

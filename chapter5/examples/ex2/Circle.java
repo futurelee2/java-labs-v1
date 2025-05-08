@@ -2,7 +2,7 @@ package chapter5.examples.ex2;
 
 /**
  * 추상 클래스 활용 예제
- * Shape 추상 클래스를 상속받는 Circle 클래스
+ * Shape 추상 클래스를 상속받는 Circle 클래스 = Shape의 구체 클래스
  */
 public class Circle extends Shape {
     // 필드

@@ -26,7 +26,7 @@ public class BasicExceptionWithTryCatchExample {
             int index = Integer.parseInt(scanner.nextLine());
             System.out.println("선택한 요소: " + numbers[index]);
             
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { // try문에서 발생하는 예외가 여러가지. catch 개수 제한 없음
             // 숫자 형식이 잘못된 경우 처리
             System.out.println("오류: 올바른 숫자 형식이 아닙니다.");
             System.out.println("예외 메시지: " + e.getMessage());

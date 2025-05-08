@@ -5,8 +5,14 @@ package chapter4.examples.ex3;
  */
 public class CalculatorExample {
     public static void main(String[] args) {
+
+        // 객체 생성 후, 인스턴스 메소드 접근(public)
+        // 클래스명.인스턴스 메소드는 접근 불가
+        // 클래스명.정적 메소드 접근 가능
+        // 객체명.정적 메소드 접근 가능(사용X)
+
         // static 메소드는 객체 생성 없이 클래스 이름으로 직접 호출 가능
-        System.out.println("원의 넓이(반지름 5): " + Calculator.calculateCircleArea(5));
+        System.out.println("원의 넓이(반지름 5): " + Calculator.calculateCircleArea(5)); // static은 클래스 명으로 호출 가능
         System.out.println("원의 둘레(반지름 5): " + Calculator.calculateCircleCircumference(5));
         
         // static 변수 사용
@@ -21,7 +27,7 @@ public class CalculatorExample {
         
         // static 메소드/변수는 객체를 통해서도 접근 가능
         // 하지만 클래스 이름으로 접근하는 것이 바람직함
-        System.out.println("\n원의 넓이(반지름 3): " + calc1.calculateCircleArea(3)); // 권장하지 않음
+        System.out.println("\n원의 넓이(반지름 3): " + calc1.calculateCircleArea(3)); // 권장하지 않음 -> 사용 X (static은 언제든 접근 가능함)
         
         System.out.println("\n현재 생성된 계산기 수: " + Calculator.getCalculatorCount());
         

@@ -14,7 +14,7 @@ public class BankingApp {
         
         Scanner scanner = new Scanner(System.in);
         BankingSystem bankingSystem = new BankingSystem();
-        
+
         // 초기 계좌 생성 (테스트용)
         try {
             bankingSystem.createAccount("1001", "홍길동", 10000);
@@ -90,25 +90,64 @@ public class BankingApp {
     private static void createAccount(Scanner scanner, BankingSystem bankingSystem) {
         // TODO: 사용자로부터 계좌번호, 예금주 이름, 초기 잔액을 입력받아 계좌를 생성하세요.
         // TODO: IllegalArgumentException을 처리하세요.
-        
+        try {
+            System.out.print("계좌번호 입력");
+            String accountNumber = scanner.nextLine();
+            System.out.print("예금주명 입력");
+            String name = scanner.nextLine();
+            System.out.print("초기잔액 입력");
+            double balance = scanner.nextDouble();
+            scanner.nextLine(); // 버퍼 정리
+
+            bankingSystem.createAccount(accountNumber, name, balance);
+            System.out.print("계좌 생성 완료");
+
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     /**
      * 계좌 조회 메소드
      */
-    private static void viewAccount(Scanner scanner, BankingSystem bankingSystem) {
+    private static void viewAccount(Scanner scanner, BankingSystem bankingSystem){
         // TODO: 사용자로부터 계좌번호를 입력받아 계좌 정보를 조회하세요.
         // TODO: InvalidAccountException을 처리하세요.
-        
+
+        try {
+            System.out.print("계좌번호 입력");
+            String accountNumber = scanner.nextLine();
+            BankAccount account = bankingSystem.getAccount(accountNumber);
+            String info = account.toString();
+            System.out.println(info);
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        } catch(InvalidAccountException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     /**
      * 입금 메소드
      */
-    private static void deposit(Scanner scanner, BankingSystem bankingSystem) {
+    private static void deposit(Scanner scanner, BankingSystem bankingSystem) throws InvalidAccountException , IllegalArgumentException {
         // TODO: 사용자로부터 계좌번호와 입금액을 입력받아 입금 처리하세요.
         // TODO: InvalidAccountException과 IllegalArgumentException을 처리하세요.
-        
+        try {
+            System.out.print("계좌번호 입력");
+            String toAccountNumber = scanner.nextLine();
+            System.out.print("입금액 입력");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+
+            BankAccount account = bankingSystem.getAccount(toAccountNumber);
+            account.deposit(amount);
+            System.out.print("입금 완룡~ㅎㅋㅎㅋ");
+
+        } catch(InvalidAccountException e){
+            System.out.println(e.getMessage());
+        }
+
     }
     
     /**
@@ -117,7 +156,22 @@ public class BankingApp {
     private static void withdraw(Scanner scanner, BankingSystem bankingSystem) {
         // TODO: 사용자로부터 계좌번호와 출금액을 입력받아 출금 처리하세요.
         // TODO: InvalidAccountException, InsufficientBalanceException, IllegalArgumentException을 처리하세요.
-        
+        try {
+            System.out.print("계좌번호 입력");
+            String toAccountNumber = scanner.nextLine();
+            System.out.print("출금액 입력");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            BankAccount account = bankingSystem.getAccount(toAccountNumber);
+            account.withdraw(amount);
+            System.out.print("출금완룡~ㅋㅎㅋㅎ");
+
+        } catch(InvalidAccountException e){
+            System.out.println(e.getMessage());
+        } catch (InsufficientBalanceException e){
+            System.out.println(e.getMessage());
+    }
+
     }
     
     /**
@@ -126,6 +180,25 @@ public class BankingApp {
     private static void transfer(Scanner scanner, BankingSystem bankingSystem) {
         // TODO: 사용자로부터 출금 계좌번호, 입금 계좌번호, 이체 금액을 입력받아 이체 처리하세요.
         // TODO: InvalidAccountException, InsufficientBalanceException, IllegalArgumentException을 처리하세요.
-        
+
+        try {
+            System.out.print("출금 계좌번호 입력");
+            String fromaccount = scanner.nextLine(); //출금
+            System.out.print("입금 계좌번호 입력");
+            String toaccount = scanner.nextLine(); //입금
+            System.out.print("이체금액 입력");
+            double amount = scanner.nextDouble(); // 이체 금액
+            scanner.nextLine();
+            bankingSystem.transfer(fromaccount,toaccount,amount);
+            System.out.print("이체 완룡~~ㅎㅋㅎㅋ");
+
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        } catch(InvalidAccountException e){
+            System.out.println(e.getMessage());
+        } catch(InsufficientBalanceException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 } 

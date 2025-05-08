@@ -16,7 +16,7 @@ public class FinalExample {
     public FinalExample(String name) {
         // 생성자에서 final 필드 초기화
         this.name = name;
-        this.builder = new StringBuilder("Hello");
+        this.builder = new StringBuilder("Hello"); // final 필드를 사용할 경우, 객체 최초 생성 될때 초기화 강제 시켜줘야함
     }
     
     public void printInfo() {
@@ -51,7 +51,7 @@ public class FinalExample {
         // example.name = "Robert"; // 에러: final 필드는 값 변경 불가
         
         // final 참조 변수의 객체 내용 변경
-        example.appendToBuilder("World");
+        example.appendToBuilder("World"); // final 변수 값 자체만 변경이 불가능하지, 뒤에 글 추가는 가능함
         example.printInfo();
         
         // final 메소드 호출

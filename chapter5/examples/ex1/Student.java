@@ -16,11 +16,12 @@ public class Student extends Person {
         this.studentId = "00000000";
         this.major = "미정";
         System.out.println("Student 기본 생성자 호출");
+//        super(); // super 부모클래스 생성자 호출은 가장 첫번째에 와야함 -> 여기 넣으면 오류남
     }
     
     public Student(String name, int age, String studentId, String major) {
         // 부모 클래스의 매개변수 생성자 호출
-        super(name, age);
+        super(name, age); // 매개변수 두개인 생성자 호출
         this.studentId = studentId;
         this.major = major;
         System.out.println("Student 매개변수 생성자 호출");

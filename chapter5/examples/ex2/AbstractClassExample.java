@@ -9,7 +9,7 @@ public class AbstractClassExample {
         System.out.println("===== 추상 클래스 활용 예제 =====\n");
         
         // 추상 클래스의 객체는 직접 생성할 수 없음
-        // Shape shape = new Shape(); // 컴파일 오류
+//        Shape shape = new Shape(); // 컴파일 오류
         
         // Circle 객체 생성 및 테스트
         System.out.println("[1] Circle 객체 생성 및 테스트");
@@ -34,7 +34,7 @@ public class AbstractClassExample {
         
         // 다형성 활용
         System.out.println("\n[3] 다형성 활용");
-        Shape[] shapes = new Shape[2];
+        Shape[] shapes = new Shape[2]; // 부모클래스로 담음
         shapes[0] = circle;
         shapes[1] = rectangle;
         
@@ -42,8 +42,8 @@ public class AbstractClassExample {
         System.out.println("\n모든 도형의 면적 합계 계산:");
         double totalArea = 0;
         for (Shape shape : shapes) {
-            totalArea += shape.getArea();
-            System.out.println(shape.getClass().getSimpleName() + "의 면적: " + shape.getArea());
+            totalArea += shape.getArea(); // 다형성으로 인해 원, 사각형 등 모든 면적을 구할 수 있음
+            System.out.println(shape.getClass().getSimpleName() + "의 면적: " + shape.getArea()); // 리플렉션이라는 개념. 역으로 추상적 -> 구체적 타입으로 변환? 하는 것
         }
         System.out.println("총 면적: " + totalArea);
         

@@ -54,7 +54,12 @@ public class BankAccount {
     public void deposit(double amount) throws IllegalArgumentException {
         // TODO: 입금액이 0 이하인 경우 IllegalArgumentException을 발생시키세요.
         // TODO: 유효한 입금액인 경우 잔액을 증가시키세요.
-        
+
+        if(amount > 0){
+            balance+=amount;
+        }else{
+            throw new IllegalArgumentException("입금액 0 이하 입니다. 돈 넣으세용"); // 자바 표준 클래스 예외 (매개값을 이상하게 줬다는 예외)
+        }
     }
     
     /**
@@ -67,7 +72,15 @@ public class BankAccount {
         // TODO: 출금액이 0 이하인 경우 IllegalArgumentException을 발생시키세요.
         // TODO: 출금액이 잔액보다 큰 경우 InsufficientBalanceException을 발생시키세요.
         // TODO: 유효한 출금액인 경우 잔액을 감소시키세요.
-        
+
+
+        if (amount <= 0) {
+            throw new IllegalArgumentException("출금액 0 이하 입니다아아아");
+        } else if (amount > balance) {
+            throw new InsufficientBalanceException("출금 금액 부족", amount, balance); // 커스텀 예외 => this.balance 로 적어줘도 됨
+        } else {
+            balance -= amount;
+        }
     }
     
     /**

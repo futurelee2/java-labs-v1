@@ -9,14 +9,14 @@ import java.util.Map;
  * 여러 계좌를 관리하고 계좌 간 이체 기능을 제공하는 클래스입니다.
  */
 public class BankingSystem {
-    private Map<String, BankAccount> accounts;
+    private Map<String, BankAccount> accounts; // 계좌번호 : 계좌정보
     
     /**
      * 생성자
      */
     public BankingSystem() {
         this.accounts = new HashMap<>();
-    }
+    } // 초기화해줘서 accounts 자체가 객체가 됨
     
     /**
      * 계좌 생성 메소드
@@ -30,7 +30,18 @@ public class BankingSystem {
         // TODO: 계좌번호가 이미 존재하는 경우 IllegalArgumentException을 발생시키세요.
         // TODO: 초기 잔액이 0 미만인 경우 IllegalArgumentException을 발생시키세요.
         // TODO: 새 계좌를 생성하고 계좌 목록에 추가하세요.
+
+
+        // 계좌번호가 존재하는지 확인
+        if(accounts.containsKey(accountNumber)){
+            throw new IllegalArgumentException("계좌번호 존재함~~");
+        }
         
+        if(initialBalance<0){
+            throw new IllegalArgumentException("초기잔액이 0 미만입니당~~");
+        }
+        accounts.put( accountNumber, new BankAccount(accountNumber,ownerName, initialBalance)); // key, value 값을 넣어줘야함.
+
     }
     
     /**
@@ -42,9 +53,13 @@ public class BankingSystem {
     public BankAccount getAccount(String accountNumber) throws InvalidAccountException {
         // TODO: 계좌번호가 존재하지 않는 경우 InvalidAccountException을 발생시키세요.
         // TODO: 계좌가 존재하면 해당 계좌 객체를 반환하세요.
-        
-        return null; // 학생이 구현해야 하는 부분
-    }
+
+        if (!accounts.containsKey(accountNumber)){
+            throw new InvalidAccountException("계좌번호가 존재하지 않습니다~~", accountNumber);
+        }else {
+            return accounts.get(accountNumber); //  key값을 넣고 value 를 찾음
+            }
+        }
     
     /**
      * 계좌 이체 메소드
@@ -65,7 +80,18 @@ public class BankingSystem {
         // 5. 이체 성공 메시지를 출력하세요.
         
         // 참고: 이 메소드에서 발생한 예외는 호출한 곳으로 전파됩니다.
-        
+
+        BankAccount fromaccount= getAccount(fromAccountNumber);
+        BankAccount toaccount = getAccount(toAccountNumber);
+
+        if (amount <= 0) {
+            throw new IllegalArgumentException("이체 금액이 입력해주세요.~~");
+        }
+
+        fromaccount.withdraw(amount);
+        toaccount.deposit(amount);
+        System.out.println("이체가 완료되었습니다.");
+
     }
     
     /**
@@ -77,7 +103,6 @@ public class BankingSystem {
             System.out.println("등록된 계좌가 없습니다.");
             return;
         }
-        
         for (BankAccount account : accounts.values()) {
             System.out.println(account);
         }

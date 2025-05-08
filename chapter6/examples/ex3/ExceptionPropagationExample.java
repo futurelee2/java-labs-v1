@@ -17,7 +17,7 @@ public class ExceptionPropagationExample {
         } catch (Exception e) {
             System.out.println("main에서 예외를 잡았습니다: " + e.getMessage());
             
-            // 스택 추적 정보 출력
+            // 스택 추적 정보 출력 -> 예외 발생한 걸 추적 가능한 코드 (맨 위부터 오류난 걸 봐야함)
             System.out.println("\n예외 발생 위치 추적:");
             e.printStackTrace();
             try {
@@ -74,7 +74,10 @@ public class ExceptionPropagationExample {
         System.out.println("methodC 실행");
         
         // 예외 발생
-        throw new Exception("methodC에서 고의로 발생시킨 예외");
+        throw new Exception("methodC에서 고의로 발생시킨 예외"); // throw 사용!! 해서 예외를 강제적으로 발생시킴
+        // 예외를 잡는 코드가 없음( try-catch) -> 대신 throws 사용해서 예외를 던짐 -> B가 예외를 받음 -> B 도 예외를 던짐(throws) -> A가 받음 -> A 도 던짐(throws) ->
+        // main 이 받음 -> main 이 try-catch 로 받음.
+        
         
         // 이 코드는 실행되지 않음
         // System.out.println("methodC 종료");

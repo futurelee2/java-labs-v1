@@ -7,7 +7,8 @@ public class Driver {
     // 필드
     private String name;        // 이름
     private int licenseYear;    // 운전 경력(연도)
-    
+
+
     // 생성자
     public Driver(String name, int licenseYear) {
         this.name = name;

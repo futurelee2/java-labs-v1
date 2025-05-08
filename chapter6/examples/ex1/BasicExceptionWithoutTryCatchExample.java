@@ -6,13 +6,14 @@ import java.util.Scanner;
  * 기본 예외처리 예제
  * 
  * 이 예제는 의도적으로 예외를 발생시키는 예제입니다.
+ * 예외 발생 시 방어 코드가 없음.
  */
 public class BasicExceptionWithoutTryCatchExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         // 사용자로부터 숫자 입력 받기
-        System.out.print("정수를 입력하세요: ");
+        System.out.print("정수를 입력하세요: "); // ex. dd12 라고 입력 시, 오류가 발생함 (NumberFormatException)
         int number = Integer.parseInt(scanner.nextLine());
         System.out.println("입력한 숫자: " + number);
 

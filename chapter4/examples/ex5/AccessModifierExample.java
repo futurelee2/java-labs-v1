@@ -1,4 +1,5 @@
 package chapter4.examples.ex5;
+import chapter4.examples.ex5.other.OtherClass;
 
 /**
  * 접근 제한자 활용 예제
@@ -30,11 +31,12 @@ public class AccessModifierExample {
         
         // 다른 패키지의 클래스에 접근
         System.out.println("\n다른 패키지의 클래스 사용:");
-        chapter4.examples.ex5.other.OtherClass otherClass = new chapter4.examples.ex5.other.OtherClass();
+//        chapter4.examples.ex5.other.OtherClass otherClass = new chapter4.examples.ex5.other.OtherClass();
+        OtherClass otherClass = new chapter4.examples.ex5.other.OtherClass(); // 위에 import 함
         
         // public 멤버만 다른 패키지에서 접근 가능
         otherClass.publicField = 500;
-        otherClass.publicMethod();
+        otherClass.publicMethod(); // 다른클래스는 public 만 가능
         
         // protected, default, private 멤버는 다른 패키지에서 접근 불가
         // otherClass.protectedField = 600; // 에러: protected 필드에 다른 패키지에서 접근 불가
@@ -59,7 +61,7 @@ class MyClass {
     protected int protectedField;
     
     // default(접근 제한자 없음): 같은 패키지에서만 접근 가능
-    int defaultField;
+    int defaultField; // 아무것도 안붙이면 default
     
     // private: 같은 클래스 내에서만 접근 가능
     private int privateField;
@@ -89,10 +91,10 @@ class MyClass {
     // private 필드에 접근하기 위한 getter
     public int getPrivateField() {
         return privateField;
-    }
+    } // public 이어야함
     
     // private 필드를 변경하기 위한 setter
-    public void setPrivateField(int privateField) {
+    public void setPrivateField(int privateField) { // public 이어야함
         // 추가 로직(유효성 검사 등)을 넣을 수 있음
         if (privateField >= 0) {
             this.privateField = privateField;

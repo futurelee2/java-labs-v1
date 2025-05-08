@@ -10,27 +10,33 @@ public class BookTest {
         System.out.println("Book 클래스 테스트를 시작합니다.");
         
         // TODO: 기본 생성자를 사용하여 Book 객체를 생성하고 정보를 출력하세요.
-        
-        
-        
+        Book book = new Book();
+        book.bookInfo();
+
         // TODO: 제목만 인자로 받는 생성자를 사용하여 Book 객체를 생성하고 정보를 출력하세요.
-        
-        
+        Book book1 = new Book("홍학의 자리");
+        book1.bookInfo();
+
         
         // TODO: 제목과 저자를 인자로 받는 생성자를 사용하여 Book 객체를 생성하고 정보를 출력하세요.
-        
+        Book book2 = new Book("홍학의 자리", "정해연");
+        book2.bookInfo();
         
         
         // TODO: 제목, 저자, 가격을 인자로 받는 생성자를 사용하여 Book 객체를 생성하고 정보를 출력하세요.
-        
+        Book book3 = new Book("홍학의 자리", "정해연", 14000);
+        book3.bookInfo();
         
         
         // TODO: 모든 필드를 인자로 받는 생성자를 사용하여 Book 객체를 생성하고 정보를 출력하세요.
-        
-        
-        
+        Book book4 = new Book("홍학의 자리", "정해연", 14000, 2021);
+        book4.bookInfo();
+
         // TODO: 객체를 생성한 후 필드 값을 변경하고 정보를 출력하세요.
-        
-        
+        Book book5 = new Book("홍학의 자리", "정해연", 14000, 2021);
+        book5.price = 15000;
+        book5.year = 2022;
+        book5.bookInfo();
+
     }
 } 

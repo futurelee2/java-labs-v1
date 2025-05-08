@@ -23,7 +23,7 @@ public class CustomException extends Exception {
      * @param message 예외 메시지
      */
     public CustomException(String message) {
-        super(message);
+        super(message); // Exception 부모를 말함. 부모에 있는 message 임.
         this.errorCode = 0;
     }
     
