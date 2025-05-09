@@ -73,6 +73,7 @@ public class WildcardExample {
         System.out.println("Number 리스트: " + numbers);
         System.out.println("Object 리스트: " + objects);
         // addIntegers(doubleList, 3); // 컴파일 오류: List<Double>은 List<? super Integer>가 아님
+        // double 은 형제관계이지 상속관계가 아님
         
         // 와일드카드의 제약 설명
         List<?> wildcardList = new ArrayList<>(Arrays.asList(1, 2, 3));

@@ -39,16 +39,17 @@ public class ObjectClassExample {
         System.out.println("product1의 클래스: " + product1.getClass().getName());
         System.out.println("product1의 슈퍼클래스: " + product1.getClass().getSuperclass().getName());
         
-        // clone() 메소드 사용 예
+        // clone() 메소드 사용 예 -> 깊은 복사, 인터페이스를 구현해야지 사용가능
         try {
+//            product2 = product3; //얕은 복사 ( 변경 시 둘 다 바뀜)
             System.out.println("\n=== clone 메소드 ===");
             CloneableProduct cloneableProduct = new CloneableProduct("태블릿", 800000, "전자제품");
-            CloneableProduct clonedProduct = (CloneableProduct) cloneableProduct.clone();
+            CloneableProduct clonedProduct = (CloneableProduct) cloneableProduct.clone(); // CloneableProduct 반환은 Object 이기때문에 강제 형변환 필요
             
             System.out.println("원본 객체: " + cloneableProduct);
             System.out.println("복제 객체: " + clonedProduct);
-            System.out.println("원본 == 복제본: " + (cloneableProduct == clonedProduct));
-            System.out.println("원본.equals(복제본): " + cloneableProduct.equals(clonedProduct));
+            System.out.println("원본 == 복제본: " + (cloneableProduct == clonedProduct)); // 같은 것을 가리키는게 아니다? 따라서 false
+            System.out.println("원본.equals(복제본): " + cloneableProduct.equals(clonedProduct)); // 값만 같음 true ??
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

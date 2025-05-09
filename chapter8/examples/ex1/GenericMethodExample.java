@@ -42,7 +42,7 @@ public class GenericMethodExample {
      * @param <T> 타입 매개변수
      * @param array 출력할 배열
      */
-    public static <T> void printArray(T[] array) {
+    public static <T> void printArray(T[] array) { // void 앞에 사용함!! 위치 확인
         for (T element : array) {
             System.out.print(element + " ");
         }

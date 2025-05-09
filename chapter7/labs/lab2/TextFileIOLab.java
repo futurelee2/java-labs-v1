@@ -17,6 +17,7 @@ public class TextFileIOLab {
     // 파일 경로 상수
     private static final String FILE_PATH = "chapter7/labs/lab2/sample.txt";
 
+
     public static void main(String[] args) {
         // TODO: 사용자 입력을 받기 위한 Scanner 객체를 생성하세요.
 
@@ -32,6 +33,12 @@ public class TextFileIOLab {
         //    - 6: appendToFile()
         //    - 7: 프로그램 종료
         // 4. 계속하려면 Enter 키를 누르도록 안내 메시지 출력
+        showMenu();
+        System.out.println("메뉴를 번호(1~7)를 입력하세요.");
+        getIntInput(new Scanner(System.in),1,7);
+
+
+
     }
 
     /**
@@ -46,11 +53,22 @@ public class TextFileIOLab {
         // 5. 파일 통계 계산하기 (라인 수, 단어 수, 문자 수)
         // 6. 파일에 내용 추가하기
         // 7. 종료
+
+        System.out.println("1. 텍스트 파일 생성하기");
+        System.out.println("2. 텍스트 파일 읽기");
+        System.out.println("3. 텍스트 파일에서 검색하기");
+        System.out.println("4. 텍스트 파일에서 문자열 치환하기");
+        System.out.println("5. 파일 통계 계산하기 (라인 수, 단어 수, 문자 수)");
+        System.out.println("6. 파일에 내용 추가하기");
+        System.out.println("7. 종료");
+
     }
 
     /**
      * 사용자로부터 정수 입력 받기
      */
+
+
     private static int getIntInput(Scanner scanner, int min, int max) {
         // TODO: 사용자로부터 min과 max 사이의 정수를 입력받아 반환하세요.
         // 1. 사용자 입력을 정수로 변환 시도
@@ -58,30 +76,62 @@ public class TextFileIOLab {
         // 3. 잘못된 입력이 들어온 경우 적절한 메시지 출력 후 다시 입력 요청
         // 4. 유효한 입력을 받을 때까지 반복
 
-        return 0; // 구현 후 이 줄을 수정하세요.
+        int input = scanner.nextInt();
+        while (input<min || input >max){
+            System.out.println("유효한 값(1~7)을 입력하세요.");
+        }
+        return input; // 구현 후 이 줄을 수정하세요.
     }
 
     /**
      * 텍스트 파일 생성
      */
-    private static void createTextFile(Scanner scanner) {
+    private static void createTextFile(Scanner scanner) throws IOException {
         // TODO: "텍스트 파일 생성하기" 타이틀을 출력하세요.
+        System.out.println("텍스트 파일 생성하기.");
 
         // TODO: 파일이 이미 존재하는지 확인하세요.
         // 1. File 객체를 생성하고 exists() 메소드를 사용하여 확인
         // 2. 파일이 이미 존재하면 덮어쓸지 사용자에게 물어보기
         // 3. 사용자가 'n'을 입력하면 메소드 종료
 
+        String fileName = scanner.nextLine();
+
+        File file = new File(fileName);
+
+        if (file.exists()){
+            System.out.println("파일이 존재합니다.");
+            System.out.println("파일이 덮어씌우겠습니까? (Y/N)");
+            String yn = scanner.nextLine();
+            if (yn)
+
+
+        }else{
+            System.out.println("파일이 존재합니다.");
+        }
+
+
         // TODO: 사용자로부터 파일에 저장할 내용을 입력받으세요.
         // 1. 빈 줄이 입력될 때까지 사용자 입력을 받기
         // 2. 입력된 각 줄에 줄 번호 표시하기
         // 3. 입력받은 내용을 List<String>에 저장
+
+        // 빈줄 String.isEmpty()
+
+
+
 
         // TODO: BufferedWriter를 사용하여 입력받은 내용을 파일에 쓰세요.
         // 1. try-with-resources 구문 사용
         // 2. FileWriter와 BufferedWriter 생성
         // 3. 리스트의 각 줄을 파일에 쓰기 (newLine() 메소드 활용)
         // 4. 예외 처리 및 성공 메시지 출력
+        
+        // 위에서 받은 리스트 write
+        //  newLine 으로 줄바꿈
+
+
+
     }
 
     /**
@@ -99,6 +149,10 @@ public class TextFileIOLab {
         // 3. readLine() 메소드를 사용하여 한 줄씩 읽기
         // 4. 각 줄 앞에 줄 번호 붙여서 출력
         // 5. 예외 처리 및 완료 메시지 출력
+        
+        // null 나올때까지 읽기
+
+
     }
 
     /**
@@ -119,6 +173,10 @@ public class TextFileIOLab {
         // 4. Pattern, Matcher 클래스를 활용하여 검색어 하이라이트
         // 5. 검색 결과 통계 출력 (몇 개의 일치 항목을 찾았는지)
         // 6. 예외 처리
+
+
+
+
     }
 
     /**

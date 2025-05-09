@@ -35,9 +35,24 @@ public class ShopTest {
         // TODO: 인터페이스를 활용한 다형성 테스트
         //       - Buyable 타입 배열에 다양한 상품 담기
         //       - 모든 상품의 정보 출력하기
-        
-        
+        Buyable[] items = {
+            new Book("자바",20000, "이미래"),
+            new Electronics("아이폰",2000000, "10X"),
+            new DiscountedBook("자바스프링", 10000,"이미래",20),
+        };
+        System.out.println("모든 상품 정보 출력");
+        for (Buyable item : items) {
+            System.out.println(item.info());
+        }
+
         // TODO: Discountable 인터페이스를 구현한 객체만 별도로 처리하기
+        for (Buyable item : items) {
+            if(item instanceof DiscountedBook){
+                System.out.println("아래는 할인된 책입니다.");
+                System.out.println(item.info());
+            }
+        }
+
 
 
         

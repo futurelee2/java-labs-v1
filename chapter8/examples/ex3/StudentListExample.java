@@ -28,6 +28,9 @@ public class StudentListExample {
             System.out.println(student);
         }
         
+        
+        // 정렬 기준을 Student.java 에 compareTo 사용해서 id 순으로 정렬함
+        
         // ID로 기본 정렬 (Comparable 인터페이스 사용)
         Collections.sort(students);
         System.out.println("\n=== ID 기준 정렬 결과 ===");
@@ -41,7 +44,7 @@ public class StudentListExample {
             public int compare(Student s1, Student s2) {
                 return s1.getName().compareTo(s2.getName());
             }
-        });
+        }); // students, 뒤에 익명객체를 즉석해서 넣어줌 ( student의 정렬을 이름으로 해라)
         
         System.out.println("\n=== 이름 기준 정렬 결과 ===");
         for (Student student : students) {

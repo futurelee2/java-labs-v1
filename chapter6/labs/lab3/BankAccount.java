@@ -87,7 +87,8 @@ public class BankAccount {
      * 계좌 정보 문자열 반환
      */
     @Override
-    public String toString() {
+    public String toString() { // 상위클래스에서 String 값 반환하기때문에 void 안됨
         return "계좌번호: " + accountNumber + ", 예금주: " + ownerName + ", 잔액: " + balance + "원";
     }
-} 
+}
+

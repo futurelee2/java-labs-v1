@@ -71,8 +71,8 @@ public class Student implements Comparable<Student> {
     }
     
     @Override
-    public int compareTo(Student other) {
+    public int compareTo(Student other) { // 강제하고 싶은 메서드 -> id 순으로 정렬
         // ID 기준으로 정렬 (기본 정렬 기준)
-        return Integer.compare(this.id, other.id);
+        return Integer.compare(this.id, other.id); // 같으면 0, 작으면 -1, 크면 1?? 로 리턴함 -> 기준을 정해줌
     }
 } 

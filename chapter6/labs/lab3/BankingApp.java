@@ -118,8 +118,9 @@ public class BankingApp {
             System.out.print("계좌번호 입력");
             String accountNumber = scanner.nextLine();
             BankAccount account = bankingSystem.getAccount(accountNumber);
-            String info = account.toString();
-            System.out.println(info);
+//            String info = account.toString();
+//            System.out.println(info);
+            System.out.println(account); // println을 호출할 때, 자동으로 toString 을 호출하기때문에 아래 오버라이드한 toString 출력값으로 호출됨
         } catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
         } catch(InvalidAccountException e){

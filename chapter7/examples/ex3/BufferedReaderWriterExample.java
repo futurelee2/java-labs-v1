@@ -81,8 +81,8 @@ public class BufferedReaderWriterExample {
         long startTime = System.currentTimeMillis();
         
         try (
-            FileWriter writer = new FileWriter(fileName);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer)
+            FileWriter writer = new FileWriter(fileName); // 메인 스트림
+            BufferedWriter bufferedWriter = new BufferedWriter(writer) //보조 스트림
         ) {
             for (int i = 1; i <= lineCount; i++) {
                 bufferedWriter.write("이 줄은 버퍼링을 사용하여 쓴 " + i + "번째 라인입니다.");
@@ -140,7 +140,7 @@ public class BufferedReaderWriterExample {
             BufferedReader bufferedReader = new BufferedReader(reader)
         ) {
             int charCount = 0;
-            char[] buffer = new char[8192]; // 8KB 버퍼
+            char[] buffer = new char[8192]; // 8KB 버퍼 (2바이트가 아닌, 8k로) -> 버퍼 사이즈 잘 조정해서 사용하기
             int charsRead;
             
             // 버퍼 단위로 읽기
