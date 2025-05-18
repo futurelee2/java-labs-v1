@@ -55,7 +55,7 @@ public class Student implements Comparable<Student> {
     
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj) { // 주소값이 같은 객체
             return true;
         }
         if (obj == null || getClass() != obj.getClass()) {

@@ -1,5 +1,7 @@
 package chapter8.labs.lab2;
 
+import java.util.Objects;
+
 /**
  * Lab 2: 컬렉션 프레임워크 활용하기
  *
@@ -26,15 +28,37 @@ public class Book implements Comparable<Book> {
     }
     
     // TODO: getter와 setter 메소드를 구현하세요.
-    
-    
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     // TODO: toString 메소드를 오버라이드하세요.
-    
+    @Override
+    public String toString() {
+        return "("+ isbn + "," + title + "," + author + "," + category + "," + publicationYear + ")";
+    }
+
     
     // TODO: equals 메소드를 오버라이드하세요.
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return isbn.equals(book.isbn);
+
+    }
     
     
     // TODO: hashCode 메소드를 오버라이드하세요.
+    @Override
+    public int hashCode(){
+        return Objects.hash(isbn);
+    }
     
     
     /**
@@ -44,6 +68,9 @@ public class Book implements Comparable<Book> {
     @Override
     public int compareTo(Book other) {
         // TODO: ISBN 기준으로 비교하도록 구현하세요.
+
+
+
         return 0;
     }
 } 
