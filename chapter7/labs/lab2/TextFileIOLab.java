@@ -99,16 +99,16 @@ public class TextFileIOLab {
 
         File file = new File(fileName);
 
-        if (file.exists()){
-            System.out.println("파일이 존재합니다.");
-            System.out.println("파일이 덮어씌우겠습니까? (Y/N)");
-            String yn = scanner.nextLine();
-            if (yn)
-
-
-        }else{
-            System.out.println("파일이 존재합니다.");
-        }
+//        if (file.exists()){
+//            System.out.println("파일이 존재합니다.");
+//            System.out.println("파일이 덮어씌우겠습니까? (Y/N)");
+//            String yn = scanner.nextLine();
+//            if (yn)
+//
+//
+//        }else{
+//            System.out.println("파일이 존재합니다.");
+//        }
 
 
         // TODO: 사용자로부터 파일에 저장할 내용을 입력받으세요.

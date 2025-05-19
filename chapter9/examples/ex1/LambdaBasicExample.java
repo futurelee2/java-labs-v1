@@ -1,5 +1,6 @@
 package chapter9.examples.ex1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -38,9 +39,11 @@ public class LambdaBasicExample {
         
         // Predicate<T> - T를 입력받아 boolean 반환 (조건 검사)
         List<String> names = Arrays.asList("윤학생", "김학생", "이학생", "박학생", "손학생");
-        
+
+        new ArrayList<>();
+
         System.out.println("이름이 3글자인 경우:");
-        Predicate<String> isThreeChars = name -> name.length() == 3;
+        Predicate<String> isThreeChars = name -> name.length() == 3; // 조건식이 true 일때 names 를 출력하겠다.
         filterNames(names, isThreeChars);
         
         System.out.println("\n'김'씨 성을 가진 경우:");
@@ -49,11 +52,22 @@ public class LambdaBasicExample {
         // Consumer<T> - T를 입력받아 소비 (반환값 없음)
         System.out.println("\n모든 이름:");
         Consumer<String> printName = name -> System.out.println("이름: " + name);
-        names.forEach(printName);
+        names.forEach(printName); // 우리가 선언한 함수를 계속 호출
+
+        
+        //여러개 프린트
+//        System.out.println("\n모든 이름:");
+//        Consumer<String> printName = name -> {
+//            System.out.println("이름: " + name); // {} 안에 여러개 프린트문 넣을 수 있음
+//            System.out.println("이름: " + name); // {} 안에 여러개 프린트문 넣을 수 있음
+//        };
+//        names.forEach(printName); // 우리가 선언한 함수를 계속 호출
+
+
         
         // Function<T, R> - T를 입력받아 R 타입 반환 (변환)
         System.out.println("\n이름 길이:");
-        Function<String, Integer> nameLength = String::length; // 메소드 참조 사용
+        Function<String, Integer> nameLength = String::length; // 메소드 참조 사용 (Function 에서 <T 인풋, R 리턴>)
         names.forEach(name -> System.out.println(name + " -> " + nameLength.apply(name) + "글자"));
         
         // Supplier<T> - 입력 없이 T 타입 결과 반환 (공급)
@@ -87,7 +101,7 @@ public class LambdaBasicExample {
      */
     private static void filterNames(List<String> names, Predicate<String> condition) {
         for (String name : names) {
-            if (condition.test(name)) {
+            if (condition.test(name)) { // test 의 retrun 값은 boolean
                 System.out.println(name);
             }
         }

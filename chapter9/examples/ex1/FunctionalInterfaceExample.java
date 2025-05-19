@@ -56,6 +56,9 @@ public class FunctionalInterfaceExample {
         
         int a = 10, b = 5;
         System.out.println(a + " + " + b + " = " + add.calculate(a, b));
+        System.out.println(a + " + " + b + " = " + add.calculate(10, 11));
+
+
         System.out.println(a + " - " + b + " = " + subtract.calculate(a, b));
         System.out.println(a + " * " + b + " = " + multiply.calculate(a, b));
         System.out.println(a + " / " + b + " = " + divide.calculate(a, b));

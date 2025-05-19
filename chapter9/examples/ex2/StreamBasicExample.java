@@ -52,7 +52,7 @@ public class StreamBasicExample {
         // filter: 조건에 맞는 요소만 필터링
         System.out.println("이름이 '김'으로 시작하는 사람:");
         names.stream()
-             .filter(name -> name.startsWith("김"))
+             .filter(name -> name.startsWith("김")) // 선언적 방식 
              .forEach(System.out::println);
         
         // map: 각 요소를 변환
@@ -64,13 +64,22 @@ public class StreamBasicExample {
         // sorted: 요소 정렬
         System.out.println("\n이름 알파벳 순 정렬:");
         names.stream()
-             .sorted()
+             .sorted() // 오름차순 정렬
              .forEach(System.out::println);
         
         System.out.println("\n이름 길이순 정렬:");
         names.stream()
-             .sorted(Comparator.comparing(String::length))
+             .sorted(Comparator.comparing(String::length)) //comparing 자체 메서드가 있음
              .forEach(System.out::println);
+        
+        
+//        names.stream()  // 처음에 이렇게 생성해서 작성한 뒤 -> 람다로 고쳐서 쓰기
+//                .sorted(new Comparator<String>() {
+//                    @Override
+//                    public int compare(String o1, String o2) {
+//                        return 0;
+//                    }
+//                })
         
         // limit: 처음 n개의 요소로 제한
         System.out.println("\n처음 3명만 선택:");

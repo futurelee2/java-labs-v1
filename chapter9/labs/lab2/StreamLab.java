@@ -1,7 +1,11 @@
 package chapter9.labs.lab2;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 스트림 API 활용 실습
@@ -43,28 +47,48 @@ public class StreamLab {
         
         // TODO: 1에서 20까지의 정수 스트림을 생성하여 출력하세요.
         // 힌트: IntStream.rangeClosed(1, 20)...
-        
+
+        System.out.println(IntStream.rangeClosed(1,20)// InStream은 int기본형을 다룸.
+                .boxed() //따라서 박싱 과정 필요
+                .collect(Collectors.toList()));
+
+//        IntStream.rangeClosed(1, 20)  // 1부터 20까지의 int 스트림 생성
+//                .boxed()  // 기본형 int 값을 Integer 객체로 변환
+//                .forEach(System.out::println);  // 각 Integer 값을 출력
+
+
         // TODO: 문자열 배열에서 스트림을 생성하여 출력하세요.
         String[] subjects = {"국어", "영어", "수학", "과학", "사회"};
         // 힌트: Arrays.stream(subjects)...
+
+        Stream<String> sstream = Arrays.stream(subjects);
+        sstream.forEach(System.out::println);
+
         
         // TODO: 리스트에서 스트림을 생성하여 출력하세요.
         List<String> cities = Arrays.asList("서울", "부산", "인천", "대구", "대전", "광주", "울산", "세종");
         // 힌트: cities.stream()...
-        
+
+        cities.stream().forEach(System.out::println);
+
         
         // 2. 중간 연산과 최종 연산 활용
         System.out.println("\n===== 중간 연산과 최종 연산 =====");
         
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        
+//        List<Integer> numbers = Arrays.asList();
+
         // TODO: 짝수만 필터링하여 제곱한 후 평균을 계산하세요.
         // 힌트: numbers.stream().filter(...).map(...).average()
-        
+        numbers.stream().filter(number -> number%2 ==0).mapToInt(number -> number * number).average().ifPresent(System.out::println);
+//        System.out.println("평균 :"+numbers.stream().filter(number -> number%2 ==0).mapToInt(number -> number * number).average());
+
         // TODO: 문자열 리스트에서 길이가 3 이상인 문자열만 대문자로 변환하세요.
+
         // 힌트: cities.stream().filter(...).map(...)
-        
-        
+
+        System.out.println(cities.stream().filter(x->(x.length())>=3).map(x->x.toUpperCase()).collect(Collectors.toList()));
+
         // 3. 객체 스트림 처리
         System.out.println("\n===== 객체 스트림 처리 =====");
         
@@ -82,12 +106,20 @@ public class StreamLab {
         
         // TODO: 학과별로 그룹화하여 학생 수를 계산하세요.
         // 힌트: students.stream().collect(Collectors.groupingBy(..., Collectors.counting()))
-        
+        System.out.println(students.stream().collect(Collectors.groupingBy(student -> student.getDepartment(), Collectors.counting())));
+
+        // 람다표현식에서 students 라고 하면 안됨!! students 는 객체가 아닌 리스트 선언 변수일 뿐 ! 헷갈리지말기
+
         // TODO: 학과별로 그룹화한 후 평균 점수를 계산하세요.
         // 힌트: students.stream().collect(Collectors.groupingBy(..., Collectors.averagingInt(...)))
+        students.stream().collect(Collectors.groupingBy(student -> student.getDepartment(),Collectors.averagingInt(student -> student.getScore())));
+
+
         
         // TODO: 학년별로 그룹화한 후 최고 점수를 받은 학생을 찾으세요.
         // 힌트: students.stream().collect(Collectors.groupingBy(..., Collectors.maxBy(...)))
+        students.stream().collect(Collectors.groupingBy(x -> x.getGrade(),Collectors.maxBy(Comparator.comparing(Student::getScore))));
+
         
         
         // 4. 텍스트 파일 단어 빈도수 계산
@@ -102,5 +134,29 @@ public class StreamLab {
         // TODO: 텍스트에서 단어를 추출하여 빈도수를 계산하세요. (대소문자 구분 없이)
         // 힌트: Arrays.stream(text.split("\\s+|\\.|,")).filter(...).collect(Collectors.groupingBy(...))
 
+        Arrays.stream(text.split("\\s+|\\.|,"))
+        .map(String::toLowerCase)
+        .filter(word -> !word.isBlank())  // 빈 문자열 제외
+        .collect(Collectors.groupingBy(
+                word -> word,               // 단어별로 그룹화
+                Collectors.counting()       // 각 단어 개수 세기
+        ));
+
+        System.out.println(Arrays.stream(text.split("\\s+|\\.|,"))
+                .map(String::toLowerCase)
+                .filter(word -> !word.isBlank())  // 빈 문자열 제외
+                .collect(Collectors.groupingBy(
+                        word -> word,               // 단어별로 그룹화
+                        Collectors.counting()       // 각 단어 개수 세기
+                )));
+
+
+//        // 결과 출력
+//        wordFreq.forEach((word, count) ->
+//                System.out.println(word + " : " + count));
+
+
+
+        }
+
     }
-} 
